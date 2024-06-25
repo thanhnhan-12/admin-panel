@@ -38,6 +38,9 @@ class CustomerResource extends Resource
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('email'),
                 Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\TextColumn::make('created_at')->formatStateUsing(function ($state) {
+                    return \Carbon\Carbon::parse($state)->timezone('Asia/Ho_Chi_Minh')->format('m-d-Y H:i:s');
+                }),
             ])
             ->filters([
                 //
